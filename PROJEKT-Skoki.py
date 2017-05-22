@@ -1,36 +1,55 @@
+import random
+
 class Skakalec:
+
     def __init__(self, ime = "Unnamed"):
-        dolzina_skoka = 0
+        self.dolzina_skoka = 0
         self.ime = ime
+
     def __repr__(self):
-        return "Objekt"       
-    def dolzina_skoka(self):
-        self.dolzina_skoka = dolzina_skoka
+        return "Skakalec({})".format(self.ime)       
+
+    def nastavi_dolzino_skoka(self, x):
+        self.dolzina_skoka = x
         
       
 class Veter:
+
+    def __init__(self, moc = 0):
+        self.moc = moc
+    
     '''Nastavi veter ba poljubno vrednost med -3 in 3 m/s'''
-    def moc(self):
-        moc = 0
+    def nakljucno_nastavi_moc(self):
+        self.moc = random.uniform(-3,3)
+
+class Igra:
+    
+    def __init__(self):
+        self.igralec = None
+
+    def zacni(self):
+        ime = self.pridobi_ime()
+        self.igralec = Skakalec(ime)
 
         
-import random
+        zelja = self.pridobi_zeljo()
+        if zelja == "skok":
+            self.igralec.nastavi_dolzino_skoka(30 + Veter.moc * 10)
+            print("Skočila si " + str(self.igralec.dolzina_skoka))
+        else:
+            print("Tega ukaza ne poznam...")
+            
+            
 
+    def pridobi_ime(self):
+        ime = input("Ime skakalca? ")
+        return ime
 
+    def pridobi_zeljo(self):
+        zelja = input("Kaj želiš sedaj, " + self.igralec.ime + "? (skok/...) ")
+        return zelja
+    
 
+i = Igra()
+i.zacni()
 
-print ("Ime skakalca?")
-ime = input()
-print ("Kaj želiš sedaj, " + ime + "? (skok()/...)")
-
-
-SKAKALEC = Skakalec(ime)
-       
-nakljucni_veter = random.uniform(-3,3)
-Veter.moc = nakljucni_veter
-
-
-SKAKALEC.dolzina_skoka = 30 + Veter.moc * 10
-
-def skok(x = ime):
-    return SKAKALEC.dolzina_skoka
