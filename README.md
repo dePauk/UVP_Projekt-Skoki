@@ -1,3 +1,3 @@
-#Smuèarski skoki
+# Smuèarski skoki
 
 Projekt pri UVP
